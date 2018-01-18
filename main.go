@@ -24,9 +24,9 @@ var nothings = []struct {
 	{"$ nslookup nanimona.in", "** server can't find  nanimona.in: NXDOMAIN", true},
 	// DNS
 	{"GET / HTTP/1.1", "ERR_EMPTY_RESPONSE", true}, // HTTP, ELB, and Chrome
-	{"", "∅", false},                          // maths
-	{"", "void", false},                       // C
-	{"", "NULL", false},                       // C
+	{"", "∅", false},                               // maths
+	{"", "void", false},                            // C
+	{"", "NULL", false},                            // C
 }
 
 const template = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
