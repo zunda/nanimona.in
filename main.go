@@ -43,11 +43,24 @@ const template = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.
 		text-align: left;
 		font-size: 300%%;
 		font-family: monospace;
-		margin: 3em 0em 0em 0em;
+		margin: 3em 0em 3em 0em;
 		display: inline-block;
 	}
 	span.input {
 		font-weight: bold;
+	}
+	p.footer {
+		text-align: right;
+		margin: 1em;
+	}
+	a {
+		text-decoration: none;
+	}
+	a:link, a:visited {
+		color: #409040;
+	}
+	a:hover, a:active {
+		color: #60B060;
 	}
 </style>
 </head>
@@ -56,6 +69,7 @@ const template = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.
 <span class="prompt">%s</span>%s
 <span class="input">%s</span>
 </p></div>
+<p class="footer">Fork me at <a href="https://github.com/zunda/nanimona.in">GitHub</a></p>
 </body>
 </html>
 `
