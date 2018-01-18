@@ -20,11 +20,15 @@ const template = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.
 		background-color: #101020;
 		color: #808080;
 	}
-	p.nothing {
+	div.nothing {
 		text-align: center;
+	}
+	p.nothing {
+		text-align: left;
 		font-size: 300%%;
 		font-family: monospace;
 		margin: 3em;
+		display: inline-block;
 	}
 	span.input {
 		font-weight: bold;
@@ -32,10 +36,10 @@ const template = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.
 </style>
 </head>
 <body>
-<p class="nothing">
+<div class="nothing"><p class="nothing">
 <span class="prompt">%s</span>%s
 <span class="input">%s</span>
-</p>
+</p></div>
 </body>
 </html>
 `
