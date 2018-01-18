@@ -15,12 +15,13 @@ var nothings = []struct {
 	result    string
 	linebreak bool
 }{
-	{"", "無", false},                          // Japanese
-	{"GET / HTTP/1.1", "404 Not Found", true}, // HTTP
-	{">>>", "None", false},                    // Python
-	{"irb(main):001:0>", "nil", false},        // Ruby
-	{">", "undefined", false},                 // Javascript
-	{"$ cat /dev/null", "", true},             // POSIX and shell
+	{"", "無", false},                           // Japanese
+	{"GET / HTTP/1.1", "404 Not Found", true},  // HTTP
+	{"GET / HTTP/1.1", "204 No Content", true}, // HTTP
+	{">>>", "None", false},                     // Python
+	{"irb(main):001:0>", "nil", false},         // Ruby
+	{">", "undefined", false},                  // Javascript
+	{"$ cat /dev/null", "", true},              // POSIX and shell
 	{"$ nslookup nanimona.in", "** server can't find  nanimona.in: NXDOMAIN", true},
 	// DNS
 	{"GET / HTTP/1.1", "ERR_EMPTY_RESPONSE", true}, // HTTP, ELB, and Chrome
