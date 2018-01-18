@@ -43,7 +43,7 @@ const template = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.
 		text-align: left;
 		font-size: 300%%;
 		font-family: monospace;
-		margin: 3em;
+		margin: 3em 0em 0em 0em;
 		display: inline-block;
 	}
 	span.input {
