@@ -10,6 +10,22 @@ import (
 	"time"
 )
 
+var nothings = []struct {
+	prompt    string
+	result    string
+	linebreak bool
+}{
+	{"", "無", false},                          // Japanese
+	{"GET / HTTP/1.1", "404 Not Found", true}, // HTTP
+	{">>>", "None", false},                    // Python
+	{"irb(main):001:0>", "nil", false},        // Ruby
+	{">", "undefined", false},                 // Javascript
+	{"$ cat /dev/null", "", true},             // POSIX and shell
+	{"$ nslookup nanimona.in", "** server can't find  nanimona.in: NXDOMAIN", true},
+	// DNS
+	{"GET / HTTP/1.1", "ERR_EMPTY_RESPONSE", true}, // HTTP, ELB, and Chrome
+}
+
 const template = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
@@ -27,7 +43,7 @@ const template = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.
 		text-align: left;
 		font-size: 300%%;
 		font-family: monospace;
-		margin: 3em;
+		margin: 3em 0em 0em 0em;
 		display: inline-block;
 	}
 	span.input {
@@ -43,18 +59,6 @@ const template = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.
 </body>
 </html>
 `
-
-var nothings = []struct {
-	prompt    string
-	result    string
-	linebreak bool
-}{
-	{"", "無", false},                          // Japanese
-	{"GET / HTTP/1.1", "404 Not Found", true}, // HTTP
-	{">>>", "None", false},                    // Python
-	{"irb(main):001:0>", "nil", false},        // Ruby
-	{">", "undefined", false},                 // Javascript
-}
 
 func main() {
 	port := os.Getenv("PORT")
