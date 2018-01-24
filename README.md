@@ -14,5 +14,3 @@ $ heroku create
 $ git push heroku master
 $ heroku open
 ```
-
-and add your favorite status code in the address bar on your browser.
