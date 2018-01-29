@@ -4,6 +4,6 @@
 	"package": [],
 	"rootPath": "nanimona.in",
 	"heroku": {
-		"goVersion": "go1.9"
+		"goVersion": "go1.10"
 	}
 }
