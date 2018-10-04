@@ -18,6 +18,7 @@ var nothings = []struct {
 	{"", "無", false},                           // Japanese
 	{"GET / HTTP/1.1", "404 Not Found", true},  // HTTP
 	{"GET / HTTP/1.1", "204 No Content", true}, // HTTP
+	{"GET / HTTP/1.1", "410 Gone", true},       // HTTP
 	{">>>", "None", false},                     // Python
 	{"irb(main):001:0>", "nil", false},         // Ruby
 	{">", "undefined", false},                  // Javascript
