@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/sha256"
 	"fmt"
 	"html"
 	"log"
@@ -95,7 +96,11 @@ func main() {
 		if x.linebreak {
 			b = "<br>"
 		}
-		fmt.Fprintf(w, template, html.EscapeString(x.prompt), b, html.EscapeString(x.result))
+		s := fmt.Sprintf(template, html.EscapeString(x.prompt), b, html.EscapeString(x.result))
+		t := fmt.Sprintf("%x", sha256.Sum256([]byte(s)))
+		w.Header().Set("ETag", `"`+t+`"`)
+		w.Header().Set("Cache-Control", "no-cache")
+		fmt.Fprintf(w, s)
 	})
 
 	log.Println("Listening at port " + port)
