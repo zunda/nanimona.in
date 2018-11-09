@@ -100,7 +100,7 @@ func main() {
 		t := fmt.Sprintf("%x", sha256.Sum256([]byte(s)))
 		w.Header().Set("ETag", `"`+t+`"`)
 		w.Header().Set("Cache-Control", "no-cache")
-		fmt.Fprintf(w, s)
+		fmt.Fprint(w, s)
 	})
 
 	log.Println("Listening at port " + port)
