@@ -27,9 +27,9 @@ var nothings = []struct {
 	{"$ nslookup nanimona.in", "** server can't find  nanimona.in: NXDOMAIN", true},
 	// DNS
 	{"GET / HTTP/1.1", "ERR_EMPTY_RESPONSE", true}, // HTTP, ELB, and Chrome
-	{"", "∅", false},                               // maths
-	{"", "void", false},                            // C
-	{"", "NULL", false},                            // C
+	{"", "∅", false},    // maths
+	{"", "void", false}, // C
+	{"", "NULL", false}, // C
 }
 
 const template = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -86,11 +86,26 @@ func main() {
 		port = "3000"
 	}
 
+	log_rh := true
+	switch os.Getenv("LOG_REQUEST_HEADERS") {
+	case "":
+		log_rh = false
+	case "false":
+		log_rh = false
+	}
+
 	rand.Seed(time.Now().UnixNano())
 
 	h := http.NewServeMux()
 	h.HandleFunc("/favicon.ico", http.NotFound)
 	h.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if log_rh {
+			for k, vs := range r.Header {
+				for _, v := range vs {
+					fmt.Printf("%s: %s\n", k, v)
+				}
+			}
+		}
 		x := nothings[rand.Intn(len(nothings))]
 		b := ""
 		if x.linebreak {
