@@ -1,0 +1,3 @@
+module nanimona.in
+
+go 1.21.5
