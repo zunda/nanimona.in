@@ -115,6 +115,7 @@ func main() {
 		t := fmt.Sprintf("%x", sha256.Sum256([]byte(s)))
 		w.Header().Set("ETag", `"`+t+`"`)
 		w.Header().Set("Cache-Control", "no-cache")
+		w.WriteHeader(410)
 		fmt.Fprint(w, s)
 	})
 
